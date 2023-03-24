@@ -28,7 +28,7 @@ router.post("/jobs/create", (req, res, next) => {
 })
 
 //get to joblist
-router.get("/jobs", (req, res, next){
+router.get("/jobs", (req, res, next) => {
     Job.find()
         .then(jobsArr => {
             const data = {
