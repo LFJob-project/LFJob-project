@@ -1,0 +1,50 @@
+const express = require('express');
+const Job = require('../models/Job.model');
+const User = require("../models/User.model");
+const router = express.Router();
+
+
+//display Users
+router.get("/users", (req, res, next) => {
+  User.find()
+    .then( usersArr => {
+      const data = {
+        users: usersArr
+      }
+      res.render("users/users-list", data)
+    })
+    .catch(err => { 
+      console.log("error getting Users from DB", err);
+      next(err);
+    });
+});
+
+
+//display User's jobs
+router.get("/users/:userId", (req, res, next) => {
+  const userId = req.params.userId;
+  let userDetails;
+
+  User.findById()
+    .then( userFromDB => {
+      userDetails = userFromDB;
+      return Job.find();
+    })
+    .then ( jobsArr => {
+      const data = {
+        user: userDetails,
+        job: jobsArr 
+      }
+      res.render("user/user-listings", data);
+    })
+    .catch(err => { 
+      console.log("error getting Users from DB", err);
+      next(err);
+    });
+})
+
+
+
+
+
+module.exports = router;
