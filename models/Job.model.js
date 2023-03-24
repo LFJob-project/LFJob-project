@@ -24,7 +24,7 @@ const jobSchema = new Schema(
       required: [true, "details is required"]
     },
     salary: Number,
-    Rating: Number,
+    rating: Number,
     lastActiveAt: Date,
     user: {
       type: Schema.Types.ObjectId,
