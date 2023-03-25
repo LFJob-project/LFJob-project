@@ -3,9 +3,22 @@ const Job = require('../models/Job.model');
 const User = require("../models/User.model");
 const router = express.Router();
 
+
+//get to joblist
+router.get("/jobs", (req, res, next) => {
+    Job.find()
+        .then(jobsArr => {
+            const data = {
+                jobs: jobsArr
+            }
+            res.render("jobs/jobs-list", data)
+        })
+        .catch( err => { console.log("error getting jobs from DB", err);})
+})
+
 // create display form
 router.get("/jobs/create", (req, res, next) =>{
-   res.render("jobs/create")
+   res.render("jobs/job-create")
 })
 //process form
 router.post("/jobs/create", (req, res, next) => {
@@ -27,17 +40,6 @@ router.post("/jobs/create", (req, res, next) => {
         .catch(err => {console.log("error creating new job", err)})
 })
 
-//get to joblist
-router.get("/jobs", (req, res, next) => {
-    Job.find()
-        .then(jobsArr => {
-            const data = {
-                jobs: jobsArr
-            }
-            res.render("jobs/jobs-list", data)
-        })
-        .catch( err => { console.log("error getting jobs from DB", err);})
-})
 
 // jobs details
 router.get("/jobs/:jobId", (req, res, next) => {
@@ -45,7 +47,7 @@ router.get("/jobs/:jobId", (req, res, next) => {
 
     Job.findById(jobId)
         .then( jobDetails => {
-            res.render("jobs/jobs-details", jobDetails)
+            res.render("jobs/job-details", jobDetails)
         })
         .catch( err => { console.log("error getting job details", err);})
 })

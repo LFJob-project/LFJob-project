@@ -1,0 +1,22 @@
+<h1>Jobs list</h1>
+
+
+
+<ul>
+  {{#each jobs}}
+    <li>
+    <h2>{{this.title}}</h2>
+    <p>
+        Company Name: {{this.companyName}} <br />
+        Description: {{this.description}}  <br />
+        Location: {{this.location}}       <br />
+        <a href="/jobs/{{this.id}}">Details</a>   <br />
+        <a href="/jobs/{{this.id}}/update">Update</a>   <br />
+        Salary: {{this.salary}}   <br />
+        Rating: {{this.rating}}   <br />
+
+    </p>
+    </li>
+    
+  {{/each}}
+</ul>
