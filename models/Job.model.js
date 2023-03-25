@@ -7,10 +7,6 @@ const jobSchema = new Schema(
       type: String,
       required: [true, "Title is required"]
     },
-    companyName: {
-        type: String,
-        required: [true, "Name is required"] 
-    },
     location: {
       type:String,
       required: [true, "location is required"]
@@ -24,11 +20,10 @@ const jobSchema = new Schema(
       required: [true, "details is required"]
     },
     salary: Number,
-    rating: Number,
     lastActiveAt: Date,
-    user: {
+    company: {
       type: Schema.Types.ObjectId,
-      ref: "User"
+      ref: "Company"
     }
   }
 )
