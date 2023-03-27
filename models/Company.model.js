@@ -10,16 +10,19 @@ const companySchema = new Schema(
       type: String,
       required: false
     },
-    description: {
+    companyDescription: {
       type: String,
-      required: [true, "Please provide a company name"]
+      required: [true, "Please provide a company description"]
     },
     rating: {
       type: Number,
-      required: [true, "Please provide a company name"]
+      required: [false, "Please provide a company rating"]
     },
-    established: Number
+    established: Number,
+    employees: Number
   }
 );
 
-module.exports = model('Company', companySchema);
+const Company = model("Company", companySchema);
+
+module.exports = Company;

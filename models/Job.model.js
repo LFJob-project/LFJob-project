@@ -11,7 +11,7 @@ const jobSchema = new Schema(
       type:String,
       required: [true, "location is required"]
     },
-    description: {
+    jobDescription: {
       type:String,
       required: [true, "Description is required"]
     },
