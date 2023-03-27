@@ -4,6 +4,9 @@ const User = require("../models/User.model");
 const Company = require('../models/Company.model');
 const router = express.Router();
 
+const isLoggedOut = require("../middleware/isLoggedOut");
+const isLoggedIn = require("../middleware/isLoggedIn");
+
 
 //get to joblist
 router.get("/jobs", (req, res, next) => {
@@ -15,16 +18,18 @@ router.get("/jobs", (req, res, next) => {
             }
             res.render("jobs/jobs-list", data)
         })
-        .catch( err => { console.log("error getting jobs from DB", err);})
+        .catch( err => { console.log("error getting jobs from DB", err)
+        next(err);
+        ;})
 })
 
 // create display form
-router.get("/jobs/create", (req, res, next) =>{
+router.get("/jobs/create", isLoggedIn, (req, res, next) =>{
    res.render("jobs/job-create")
 })
 
 //create company 
-router.post("/jobs/create", (req, res, next) => {
+router.post("/jobs/create", isLoggedIn, (req, res, next) => {
     const companyDetails = {
       name: req.body.name,
       url: req.body.url,
@@ -59,8 +64,9 @@ router.post("/jobs/create", (req, res, next) => {
 // jobs details
 router.get("/jobs/:jobId", (req, res, next) => {
     const jobId = req.params.jobId;
-
+    
     Job.findById(jobId)
+        .populate("company")
         .then( jobDetails => {
             res.render("jobs/job-details", jobDetails)
         })
@@ -68,10 +74,10 @@ router.get("/jobs/:jobId", (req, res, next) => {
 })
 
 // edit display form
-router.get("/jobs/:jobId/update", (req, res, next) => {
+router.get("/jobs/:jobId/update", isLoggedIn, (req, res, next) => {
     const jobId = req.params.jobId; 
     
-    let jobDetails;
+    
     Job.findById(jobId)
 
         .then( jobDetails => {
@@ -85,7 +91,7 @@ router.get("/jobs/:jobId/update", (req, res, next) => {
 })
 
 // process edit form
-router.post("/jobs/:jobId/update", (req, res, next) => {
+router.post("/jobs/:jobId/update", isLoggedIn, (req, res, next) => {
     const jobId = req.params.jobId;
 
     const jobDetails = {
@@ -103,7 +109,7 @@ router.post("/jobs/:jobId/update", (req, res, next) => {
 });
 
 // delete job
-router.post("/jobs/:jobId/delete", (req ,res, next) => {
+router.post("/jobs/:jobId/delete", isLoggedIn, (req ,res, next) => {
     const jobId = req.params.jobId;
     
     Job.findByIdAndDelete(jobId)

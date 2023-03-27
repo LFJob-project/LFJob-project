@@ -2,6 +2,9 @@ const express = require('express');
 const Company = require('../models/Company.model')
 const router = express.Router();
 
+const isLoggedOut = require("../middleware/isLoggedOut");
+const isLoggedIn = require("../middleware/isLoggedIn");
+
 
 //Display companies
 router.get("/companies", (req, res, next) => {

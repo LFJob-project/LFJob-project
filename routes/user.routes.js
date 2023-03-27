@@ -4,6 +4,9 @@ const User = require("../models/User.model");
 const Company = require("../models/Company.model");
 const router = express.Router();
 
+const isLoggedOut = require("../middleware/isLoggedOut");
+const isLoggedIn = require("../middleware/isLoggedIn");
+
 
 //display Users
 router.get("/users", (req, res, next) => {
