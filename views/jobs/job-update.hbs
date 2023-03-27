@@ -1,1 +1,42 @@
-<h1>Update</h1>
+<h1>Update job: {{job.title}}</h1>
+
+
+<form action="/jobs/{{job._id}}/update" method="POST"> 
+<div class="input-group mb-3">
+  <label>Title:
+  <input type="text" class="form-control" placeholder="Job title" aria-label="job title" name="title" value="{{job.title}}">
+  </label>
+</div>
+
+<div class="input-group mb-3">
+  <label>Location:
+  <input type="text" class="form-control" placeholder="Location" aria-label="job location" name="location" value="{{job.location}}">
+  </label>
+</div>
+
+<div class="input-group mb-3">
+  <label>Job description:
+  <span class="input-group-text">Job description</span>
+  <textarea class="form-control" placeholder="please describe briefly" aria-label="With textarea" name="jobDescription" maxlength="100">{{job.jobDescription}}</textarea>
+  </label>
+</div>
+
+<div class="input-group mb-3">
+  <label>Job details:
+  <span class="input-group-text">Job Details</span>
+  <textarea class="form-control" placeholder="job details" aria-label="With textarea" name="details">{{job.details}}</textarea>
+</div>
+
+
+
+<div class="input-group mb-3">
+  <label>
+  <span class="input-group-text">Salary</span>
+  <input type="number" placeholder="salary" class="form-control" aria-label="Amount" name="salary" min="0" max="1000000" value="{{job.salary}}">
+  </label>
+</div>
+
+
+<button type="Submit">Submit</button>
+
+</form>

@@ -5,11 +5,11 @@ const userSchema = new Schema(
   {
       name: {
       type: String,
-      required: [true,"Please give us your name"]
+      required: [false,"Please give us your name"]
     },
       location: {
         type: String,
-        required: [true, "Location required"]
+        required: [false, "Location required"]
       },
       telephoneNumber: {
         type: Number,

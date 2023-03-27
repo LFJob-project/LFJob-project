@@ -8,14 +8,17 @@
     <h2>{{this.title}}</h2>
     <p>
         Company Name: {{this.company.name}} <br />
-        Description: {{this.description}}  <br />
+        Description: {{this.jobDescription}}  <br />
         Location: {{this.location}}       <br />
         <a href="/jobs/{{this.id}}">Details</a>   <br />
         <a href="/jobs/{{this.id}}/update">Update</a>   <br />
         Salary: {{this.salary}}   <br />
-
     </p>
     </li>
+
+    <form action="/jobs/{{_id}}/delete" method="POST">
+      <button>Delete</button>
+    </form>
     
   {{/each}}
 </ul>

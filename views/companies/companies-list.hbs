@@ -1,1 +1,18 @@
 <h1>companies list</h1>
+
+<ul>
+  {{#each companies}}
+    <li>
+    <h2>{{this.name}}</h2>
+    <p> 
+        Description: {{this.companyDescription}}  <br />
+        url: {{this.url}} <br />
+
+        <a href="/jobs/{{this.id}}/update">Update</a>   <br />
+
+
+    </p>
+    </li>
+    
+  {{/each}}
+</ul>

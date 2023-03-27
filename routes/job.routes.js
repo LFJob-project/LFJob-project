@@ -24,56 +24,36 @@ router.get("/jobs/create", (req, res, next) =>{
 })
 
 //create company 
-router.post("/jobs", (req,res,next) => {
+router.post("/jobs/create", (req, res, next) => {
     const companyDetails = {
-        name: req.body.name,
-        url: req.body.url,
-        companyDescription: req.body.companyDescription,
-        established: req.body.established,
-        employees: req.body.employees
-    }
-        
-    
-
+      name: req.body.name,
+      url: req.body.url,
+      companyDescription: req.body.companyDescription,
+      established: req.body.established,
+      employees: req.body.employees,
+    };
+  
     Company.create(companyDetails)
-        .then((newCompany) =>{
+      .then((newCompany) => {
         const jobDetails = {
-             title: req.body.title,
-             location: req.body.location,
-             jobDescription: req.body.jobDescription,
-             details: req.body.details,
-             salary: req.body.salary,
-             company: newCompany._id
-        }
-        return  Job.create(jobDetails);
-        })
-        .then(() => {
-            res.redirect("/jobs")
-        })
-        .catch(err => {console.log("error creating new job", err)})
-})
-//process form
-// router.post("/jobs/create", (req, res, next) => {
-//     const jobDetails = {
-//         title: req.body.title,
-//         location: req.body.location,
-//         jobDescription: req.body.jobDescription,
-//         details: req.body.details,
-//         salary: req.body.salary,
-//         company: {
-//             name: req.body.name,
-//             url: req.body.url,
-//             companyDescription: req.body.companyDescription,
-//             established: req.body.established,
-//             employees: req.body.employees
-//         }
-//     }
-//     Job.create(jobDetails)
-//         .then(()=> {
-//             res.redirect("/jobs")
-//         })
-//         .catch(err => {console.log("error creating new job", err)})
-// })
+          title: req.body.title,
+          location: req.body.location,
+          jobDescription: req.body.jobDescription,
+          details: req.body.details,
+          salary: req.body.salary,
+          company: newCompany._id
+        };
+  
+        return Job.create(jobDetails);
+      })
+      .then(() => {
+        res.redirect("/jobs");
+      })
+      .catch((err) => {
+        console.log("error creating new job", err);
+        next(err);
+      });
+  });
 
 
 // jobs details
@@ -93,14 +73,11 @@ router.get("/jobs/:jobId/update", (req, res, next) => {
     
     let jobDetails;
     Job.findById(jobId)
-        .then( jobFromDB => {
-            jobDetails = jobFromDB;
-            return User.find()
-        })
-        .then( usersArr => {
+
+        .then( jobDetails => {
             const data = {
                 job: jobDetails,
-                users: usersArr
+                
             }
             res.render("jobs/job-update", data)
         })
@@ -112,19 +89,15 @@ router.post("/jobs/:jobId/update", (req, res, next) => {
     const jobId = req.params.jobId;
 
     const jobDetails = {
-        title: req.body.title,
-        companyName: req.body.companyName,
-        location: req.body.location,
-        description: req.body.description,
-        details: req.body.details,
-        salary: req.body.salary,
-        rating: req.body.rating,
-        lastActiveAt: req.body.lastActiveAt,
-        user: req.body.user,
+          title: req.body.title,
+          location: req.body.location,
+          jobDescription: req.body.jobDescription,
+          details: req.body.details,
+          salary: req.body.salary,
     }
     Job.findByIdAndUpdate(jobId, jobDetails, {new: true})
         .then( updatedJob => {
-            res.redirect(`/jobs/${updatedJob.id}`)
+            res.redirect("/jobs")
         })
         .catch( err => next(err))
 });
