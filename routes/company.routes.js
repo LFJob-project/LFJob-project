@@ -7,7 +7,7 @@ const {isCompanyLoggedIn, isEmployerLoggedIn, isLoggedIn} = require("../middlewa
 
 
 //Display companies
-router.get("/companies",isEmployerLoggedIn, (req, res, next) => {
+router.get("/companies", (req, res, next) => {
   Company.find()
     .then( companiesArr => {
 

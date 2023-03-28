@@ -9,7 +9,7 @@ const {isCompanyLoggedIn, isEmployerLoggedIn, isLoggedIn} = require("../middlewa
 
 
 //get to joblist
-router.get("/jobs", isEmployerLoggedIn, (req, res, next) => {
+router.get("/jobs", (req, res, next) => {
     Job.find()
         .populate("company")
         .then(jobsArr => {
@@ -24,12 +24,12 @@ router.get("/jobs", isEmployerLoggedIn, (req, res, next) => {
 })
 
 // create display form
-router.get("/jobs/create", isCompanyLoggedIn, (req, res, next) =>{
+router.get("/jobs/create", (req, res, next) =>{
    res.render("jobs/job-create")
 })
 
 //create company 
-router.post("/jobs/create", isCompanyLoggedIn, (req, res, next) => {
+router.post("/jobs/create", (req, res, next) => {
     const companyDetails = {
       name: req.body.name,
       url: req.body.url,
@@ -62,7 +62,7 @@ router.post("/jobs/create", isCompanyLoggedIn, (req, res, next) => {
 
 
 // jobs details
-router.get("/jobs/:jobId", isEmployerLoggedIn, (req, res, next) => {
+router.get("/jobs/:jobId", (req, res, next) => {
     const jobId = req.params.jobId;
     
     Job.findById(jobId)
@@ -74,7 +74,7 @@ router.get("/jobs/:jobId", isEmployerLoggedIn, (req, res, next) => {
 })
 
 // edit display form
-router.get("/jobs/:jobId/update", isCompanyLoggedIn, (req, res, next) => {
+router.get("/jobs/:jobId/update", (req, res, next) => {
     const jobId = req.params.jobId; 
     
     
@@ -91,7 +91,7 @@ router.get("/jobs/:jobId/update", isCompanyLoggedIn, (req, res, next) => {
 })
 
 // process edit form
-router.post("/jobs/:jobId/update", isCompanyLoggedIn, (req, res, next) => {
+router.post("/jobs/:jobId/update", (req, res, next) => {
     const jobId = req.params.jobId;
 
     const jobDetails = {
@@ -109,7 +109,7 @@ router.post("/jobs/:jobId/update", isCompanyLoggedIn, (req, res, next) => {
 });
 
 // delete job
-router.post("/jobs/:jobId/delete", isCompanyLoggedIn, (req ,res, next) => {
+router.post("/jobs/:jobId/delete", (req ,res, next) => {
     const jobId = req.params.jobId;
     
     Job.findByIdAndDelete(jobId)
