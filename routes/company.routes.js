@@ -40,4 +40,16 @@ router.get("/companies/my-listings", (req, res, next) =>{
     });
 });
 
+router.get("/companies/:jobId", (req, res, next) => {
+  const id = req.params.jobId;
+  Job.find({companyId: id})
+    .then( jobsArr => {
+      res.render("/companies/listings", {jobsArr})
+    })
+    .catch( err => {
+      console.log("error getting companies jobs", err);
+      next(err)
+    })
+})
+
 module.exports = router;
