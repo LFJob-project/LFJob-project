@@ -19,7 +19,7 @@ const jobSchema = new Schema(
       type:String,
       required: [true, "details is required"]
     },
-    salary: Number,
+    salary: String,
     lastActiveAt: Date,
     company: {
       type: Schema.Types.ObjectId,

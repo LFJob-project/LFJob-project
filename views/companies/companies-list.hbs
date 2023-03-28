@@ -1,16 +1,24 @@
-<h1>companies list</h1>
+<h1 class="mt-3 mb-3 text-center">companies list</h1>
 
-<ul>
+
+<div class="container ">
   {{#each companies}}
-    <li>
-    <h2>{{this.name}}</h2>
-    <p> 
-        Description: {{this.companyDescription}}  <br />
-        url: <a href="{{this.url}}">{{this.url}}</a><br />
-        
+<div class="row">
 
-    </p>
-    </li>
-    
+  <div class="col-12 col-sm-6 col-md-4 product mb-3">
+    <div class="card" style="width: 18rem; height:14rem;">
+      <div class="card-body">
+
+        <h5 class="card-title">{{this.name}}</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary"><a href="{{this.url}}">{{this.url}}</a></h6>
+        
+        <a href="/jobs/{{this.id}}" class="card-link btn btn-primary">Find all Jobs of this company</a>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
   {{/each}}
-</ul>
+</div>
