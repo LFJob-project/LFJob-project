@@ -1,14 +1,32 @@
-<h1>{{this.title}}</h1>
-<ul>
-    
-    <li>
-      <p>
-        Company Name: {{this.company.name}} <br />
-        Description: {{this.jobDescription}} <br />
-        Location: {{this.location}} <br />  
-        Details: {{this.details}}  <br />
-        salary: {{this.salary}} <br />
-      </p>
-    </li>
-   
-</ul>
+<div class="job-details">
+  <h1>{{this.title}}</h1>
+  <ul class="details-container">
+
+    <p>
+      <li class="details-list">
+        <strong>Company Name: </strong>
+        {{this.company.name}}
+        <br />
+      </li>
+      <li class="details-list">
+        <strong>Description: </strong>
+        {{this.jobDescription}}
+        <br /></li>
+      <li class="details-list">
+        <strong>Location: </strong>
+        {{this.location}}
+        <br />
+      </li>
+      <li class="details-list">
+        <strong>Details:</strong>{{this.details}}
+        <br /></li>
+      <li class="details-list">
+        <strong>Salary:</strong>
+        {{this.salary}}
+        <br /></li>
+    </p>
+
+  </ul>
+
+  <button type="button" class="btn btn-success">Apply</button>
+</div>
