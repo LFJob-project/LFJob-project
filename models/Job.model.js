@@ -23,7 +23,8 @@ const jobSchema = new Schema(
     lastActiveAt: Date,
     company: {
       type: Schema.Types.ObjectId,
-      ref: "Company"
+      ref: "Company",
+      required: true,
     }
   }
 )

@@ -1,11 +1,8 @@
-const { Schema, model } = require('mongoose');
+const { Schema } = require('mongoose');
+const User = require("./User.model");
 
 const companySchema = new Schema(
   {
-    name:{
-      type: String,
-      required: [true, "Please provide a company name"]
-    },
     url: { 
       type: String,
       required: false
@@ -19,10 +16,17 @@ const companySchema = new Schema(
       required: [false, "Please provide a company rating"]
     },
     established: Number,
+    location: {
+      type: String,
+      required: [false, "Location required"],
+    },
     employees: Number
+  },
+  {
+    timestamps: true,
   }
 );
 
-const Company = model("Company", companySchema);
+const Company = User.discriminator("Company", companySchema)
 
 module.exports = Company;

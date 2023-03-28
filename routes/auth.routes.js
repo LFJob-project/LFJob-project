@@ -14,6 +14,7 @@ const User = require("../models/User.model");
 // Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
+const Company = require("../models/Company.model");
 
 // GET /auth/signup
 router.get("/signup", isLoggedOut, (req, res) => {
@@ -22,21 +23,21 @@ router.get("/signup", isLoggedOut, (req, res) => {
 
 // POST /auth/signup
 router.post("/signup", isLoggedOut, (req, res) => {
-  const { email, password } = req.body;
+  const { name, email, password, type } = req.body;
 
   // Check that , email, and password are provided
-  if ( email === "" || password === "") {
+  if ( email === "" || password === "" || name === "") {
     res.status(400).render("auth/signup", {
       errorMessage:
-        "All fields are mandatory. Please provide your  email and password.",
+        "All fields are mandatory. Please provide your name, email and password.",
     });
 
     return;
   }
 
-  if (password.length < 6) {
+  if (password.length < 8) {
     res.status(400).render("auth/signup", {
-      errorMessage: "Your password needs to be at least 6 characters long.",
+      errorMessage: "Your password needs to be at least 8 characters long.",
     });
 
     return;
@@ -54,14 +55,52 @@ router.post("/signup", isLoggedOut, (req, res) => {
     return;
   }
   */
+  User.findOne({ name })
+    .then( found => {
+      if(found){
+        return res.status(400).render("auth/signup", {
+          errorMessage: "Username already taken.", });
+      }
+      // Create a new user - start by hashing the password
+      return bcrypt
+        .genSalt(saltRounds)
+        .then((salt) => bcrypt.hash(password, salt))
+        .then((hashedPassword) => {
+          if(type === "company"){
+            const { url, companyDescription, established, employees, location} = req.body
 
-  // Create a new user - start by hashing the password
-  bcrypt
-    .genSalt(saltRounds)
-    .then((salt) => bcrypt.hash(password, salt))
-    .then((hashedPassword) => {
-      // Create a user and save it in the database
-      return User.create({ email, password: hashedPassword });
+            return Company.create({
+              name,
+              email,
+              password: hashedPassword,
+              type,
+              url,
+              companyDescription,
+              established,
+              employees,
+              location
+            })
+            .catch( err => {
+              console.log("An error occured creating a new company", err);
+              next(err)
+            });
+          }else if (type = "employee"){
+            const { location, telephoneNumber, age } =req.body
+
+            return Employee.create({
+              name,
+              email,
+              password: hashedPassword,
+              type,
+              location,
+              telephoneNumber,
+              age
+            })
+            .catch( err => {
+              console.log("An error occured creating a new employee", err);
+              next(err);
+            })
+          }
     })
     .then((user) => {
       res.redirect("/auth/login");
@@ -101,7 +140,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 
   // Here we use the same logic as above
   // - either length based parameters or we check the strength of a password
-  if (password.length < 6) {
+  if (password.length < 8) {
     return res.status(400).render("auth/login", {
       errorMessage: "Your password needs to be at least 6 characters long.",
     });
