@@ -47,7 +47,9 @@ router.get("/users/:userId", (req, res, next) => {
     });
 })
 
-
+router.get("/contact", (req, res, next) => {
+  res.render("contact")
+});
 
 
 

@@ -54,5 +54,10 @@ h1 {
 }
 
 #footer{
-  height: 150px;
+  height: 14%;
+}
+
+.img-fluid {
+  max-width: 50%;
+  height: auto;
 }
