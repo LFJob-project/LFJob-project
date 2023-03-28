@@ -16,6 +16,7 @@ const {isCompanyLoggedIn, isEmployerLoggedIn, isLoggedIn} = require("../middlewa
 const isLoggedOut = require("../middleware/isLoggedOut");
 
 const Company = require("../models/Company.model");
+const Employee = require("../models/Employee.model")
 
 // GET /auth/signup
 router.get("/signup", isLoggedOut, (req, res) => {
@@ -23,7 +24,7 @@ router.get("/signup", isLoggedOut, (req, res) => {
 });
 
 // POST /auth/signup
-router.post("/signup", isLoggedOut, (req, res) => {
+router.post("/signup", isLoggedOut, (req, res, next) => {
   const { name, email, password, type } = req.body;
 
   // Check that , email, and password are provided
@@ -85,7 +86,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
               console.log("An error occured creating a new company", err);
               next(err)
             });
-          }else if (type = "employee"){
+          }else if (type === "employee"){
             const { location, telephoneNumber, age } =req.body
 
             return Employee.create({

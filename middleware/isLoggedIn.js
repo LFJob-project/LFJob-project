@@ -1,14 +1,15 @@
 
-function isCompanyLoggedIn (req, res, next) {
-  if(req.session.currentUser === true && req.session.currentUser.type === "company"){
+function isCompany (req, res, next) {
+  if(req.session.currentUser.type === "company"){
     next()
   }else{
     return res.redirect("/auth/login")
   }
 }
 
-function isEmployerLoggedIn (req, res, next) {
+function isEmployer (req, res, next) {
   if(req.session.currentUser === true && req.session.currentUser.type === "employee"){
+
     next()
   }else{
     return res.redirect("/auth/login")
@@ -20,14 +21,12 @@ function isLoggedIn (req, res, next) {
   if (!req.session.currentUser) {
     return res.redirect("/auth/login");
   } 
-
-
   next();
 };
 
 
 module.exports = { 
-  isCompanyLoggedIn,
-  isEmployerLoggedIn,
+  isCompany,
+  isEmployer,
   isLoggedIn
 };

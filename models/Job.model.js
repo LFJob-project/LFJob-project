@@ -20,10 +20,10 @@ const jobSchema = new Schema(
       required: [true, "details is required"]
     },
     salary: String,
-    company: {
+    companyId: {
       type: Schema.Types.ObjectId,
       ref: "Company",
-      required: false,
+      required: true,
     }
   },
   {

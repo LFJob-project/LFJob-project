@@ -5,13 +5,13 @@ const Company = require('../models/Company.model');
 const router = express.Router();
 
 const isLoggedOut = require("../middleware/isLoggedOut");
-const {isCompanyLoggedIn, isEmployerLoggedIn, isLoggedIn} = require("../middleware/isLoggedIn");
+const {isEmployer, isCompany, isLoggedIn} = require("../middleware/isLoggedIn");
 
 
 //get to joblist
 router.get("/jobs", (req, res, next) => {
     Job.find()
-        .populate("company")
+        .populate("companyId")
         .then(jobsArr => {
             const data = {
                 jobs: jobsArr
@@ -24,18 +24,20 @@ router.get("/jobs", (req, res, next) => {
 })
 
 // create display form
-router.get("/jobs/create", (req, res, next) =>{
+router.get("/jobs/create", isLoggedIn, isCompany,(req, res, next) =>{
+    console.log(req.session.currentUser)
    res.render("jobs/job-create")
 })
 
 //create company 
-router.post("/jobs/create", (req, res, next) => {
+router.post("/jobs/create", isLoggedIn, isCompany, (req, res, next) => {
     const jobDetails = {
         title: req.body.title,
         location: req.body.location,
         jobDescription: req.body.jobDescription,
         details: req.body.details,
         salary: req.body.salary,
+        companyId: req.session.currentUser._id
       };
       
     Job.create(jobDetails)
