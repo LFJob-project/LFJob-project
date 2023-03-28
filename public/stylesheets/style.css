@@ -52,3 +52,7 @@ h1 {
 #navbar .dropdown-item {
   color:black;
 }
+
+#footer{
+  height: 150px;
+}
