@@ -116,8 +116,9 @@ router.post("/signup", isLoggedOut, (req, res) => {
       } else {
         next(error);
       }
-    });
-});
+    })
+  })
+})
 
 // GET /auth/login
 router.get("/login", isLoggedOut, (req, res) => {
@@ -192,4 +193,5 @@ router.get("/logout", isLoggedIn, (req, res) => {
   });
 });
 
-module.exports = router;
+module.exports = router
+
