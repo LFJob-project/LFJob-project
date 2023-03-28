@@ -25,7 +25,7 @@ const jobSchema = new Schema(
       ref: "Company",
       required: true,
     }
-  }
+  },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
     timestamps: true,
