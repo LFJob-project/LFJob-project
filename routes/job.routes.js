@@ -30,27 +30,17 @@ router.get("/jobs/create", (req, res, next) =>{
 
 //create company 
 router.post("/jobs/create", (req, res, next) => {
-    const companyDetails = {
-      name: req.body.name,
-      url: req.body.url,
-      companyDescription: req.body.companyDescription,
-      established: req.body.established,
-      employees: req.body.employees,
-    };
-  
-    Company.create(companyDetails)
-      .then((newCompany) => {
-        const jobDetails = {
-          title: req.body.title,
-          location: req.body.location,
-          jobDescription: req.body.jobDescription,
-          details: req.body.details,
-          salary: req.body.salary,
-          company: newCompany._id
-        };
-  
-        return Job.create(jobDetails);
-      })
+    const jobDetails = {
+        title: req.body.title,
+        location: req.body.location,
+        jobDescription: req.body.jobDescription,
+        details: req.body.details,
+        salary: req.body.salary,
+        company: newCompany._id
+      };
+
+
+    Job.create(jobDetails)
       .then(() => {
         res.redirect("/jobs");
       })
