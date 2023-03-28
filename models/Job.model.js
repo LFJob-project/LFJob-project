@@ -20,12 +20,15 @@ const jobSchema = new Schema(
       required: [true, "details is required"]
     },
     salary: String,
-    lastActiveAt: Date,
     company: {
       type: Schema.Types.ObjectId,
       ref: "Company",
       required: true,
     }
+  }
+  {
+    // this second object adds extra properties: `createdAt` and `updatedAt`
+    timestamps: true,
   }
 )
 // new comment
