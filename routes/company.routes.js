@@ -3,11 +3,11 @@ const Company = require('../models/Company.model')
 const router = express.Router();
 
 const isLoggedOut = require("../middleware/isLoggedOut");
-const isLoggedIn = require("../middleware/isLoggedIn");
+const {isCompanyLoggedIn, isEmployerLoggedIn, isLoggedIn} = require("../middleware/isLoggedIn");
 
 
 //Display companies
-router.get("/companies", (req, res, next) => {
+router.get("/companies",isEmployerLoggedIn, (req, res, next) => {
   Company.find()
     .then( companiesArr => {
 
