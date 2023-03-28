@@ -12,7 +12,9 @@ h1 {
   color: 15px;
 }
 
-
+ img {
+  height: 600px;
+}
 
 #navbar{
   background-color: rgb(12, 133, 240) !important;
