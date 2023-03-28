@@ -1,9 +1,10 @@
 <div id="form">
-  <h2>Sign Up</h2>
+  <h2>Sign Up as company</h2>
+
   <form action="/auth/signup" method="POST">
 
     <label> Username
-      <input type="text" name="username" placeholder="Your username" />
+      <input type="text" name="name" placeholder="Your username" />
     </label>
 
     <label> Email
@@ -14,11 +15,75 @@
       <input type="password" name="password" placeholder="Your password" />
     </label>
 
-    <button type="submit">Sign Up</button>
+    <label>
+      <input type="text" name="url" placeholder="url">
+    </label>
 
+    <label>
+      <input type="text" name="companyDescription" placeholder="companyDescription">
+    </label>
+
+    <label>
+      <input type="number" name="established" placeholder="established">
+    </label>
+
+    <label>
+      <input type="text" name="location" placeholder="location">
+    </label>
+
+    <label>
+      <input type="number" name="employees" placeholder="employees">
+    </label>
+
+    <input type="text" name="type" value="company">
+
+    <button type="submit">Sign Up</button>
 
     {{#if errorMessage}}
       <p class="error">{{errorMessage}}</p>
     {{/if}}
   </form>
 </div>
+
+<div id="form">
+  <h2>Sign Up as employee</h2>
+
+  <form action="/auth/signup" method="POST">
+
+    <label> Username
+      <input type="text" name="name" placeholder="Your username" />
+    </label>
+
+    <label> Email
+      <input type="email" name="email" placeholder="Your email" />
+    </label>
+
+    <label> Password
+      <input type="password" name="password" placeholder="Your password" />
+    </label>
+
+    <label>
+      <input type="text" name="location" placeholder="location">
+    </label>
+
+
+    <label>
+      <input type="number" name="age" placeholder="age">
+    </label>
+
+
+    <label>
+      <input type="number" name="telephoneNumber" placeholder="telephoneNumber">
+    </label>
+
+    <input type="text" name="type" value="employee">
+
+    <button type="submit">Sign Up</button>
+
+    {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}}
+  </form>
+</div>
+
+
