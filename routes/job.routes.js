@@ -42,7 +42,7 @@ router.post("/jobs/create", isLoggedIn, isCompany, (req, res, next) => {
       
     Job.create(jobDetails)
       .then(() => {
-        res.redirect("/jobs");
+        res.redirect("/companies/my-listings");
       })
       .catch((err) => {
         console.log("error creating new job", err);
@@ -56,7 +56,7 @@ router.get("/jobs/:jobId", (req, res, next) => {
     const jobId = req.params.jobId;
     
     Job.findById(jobId)
-        .populate("company")
+        .populate("companyId")
         .then( jobDetails => {
             res.render("jobs/job-details", jobDetails)
         })
@@ -93,7 +93,7 @@ router.post("/jobs/:jobId/update", (req, res, next) => {
     }
     Job.findByIdAndUpdate(jobId, jobDetails, {new: true})
         .then( updatedJob => {
-            res.redirect("/jobs")
+            res.redirect("/companies/my-listings")
         })
         .catch( err => next(err))
 });
@@ -104,7 +104,7 @@ router.post("/jobs/:jobId/delete", (req ,res, next) => {
     
     Job.findByIdAndDelete(jobId)
         .then(() => {
-            res.redirect("/jobs")
+            res.redirect("/companies/my-listings")
         })
         .catch( err => next(err))
 });

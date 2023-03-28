@@ -4,6 +4,7 @@ const router = express.Router();
 
 const isLoggedOut = require("../middleware/isLoggedOut");
 const {isCompanyLoggedIn, isEmployerLoggedIn, isLoggedIn} = require("../middleware/isLoggedIn");
+const Job = require('../models/Job.model');
 
 
 //Display companies
@@ -18,6 +19,23 @@ router.get("/companies", (req, res, next) => {
     })
     .catch(err => {
       console.log("error getting Companies from DB", err);
+      next();
+    });
+});
+
+
+//route to get each companies jobs only
+router.get("/companies/my-listings", (req, res, next) =>{
+   const id = req.session.currentUser._id;
+   Job.find({companyId: id})
+    .then(jobs => {
+      const data = {
+        jobs: jobs
+      }
+      res.render("companies/my-listings", data);
+    })
+    .catch(err => {
+      console.log("error getting companies' listings from DB", err);
       next();
     });
 });
