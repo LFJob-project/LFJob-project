@@ -23,7 +23,7 @@ const jobSchema = new Schema(
     company: {
       type: Schema.Types.ObjectId,
       ref: "Company",
-      required: true,
+      required: false,
     }
   },
   {

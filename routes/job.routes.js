@@ -36,10 +36,8 @@ router.post("/jobs/create", (req, res, next) => {
         jobDescription: req.body.jobDescription,
         details: req.body.details,
         salary: req.body.salary,
-        company: newCompany._id
       };
-
-
+      
     Job.create(jobDetails)
       .then(() => {
         res.redirect("/jobs");
