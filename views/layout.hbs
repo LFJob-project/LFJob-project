@@ -42,8 +42,9 @@
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="/auth/signup">Register</a></li>
               <li><a class="dropdown-item" href="/auth/login">Login</a></li>
+              {{#if userInSession}}
               <li><a class="dropdown-item" href="/auth/logout">Logout</a></li>
-              
+              {{/if}}
             </ul>
           </li>
         </ul>

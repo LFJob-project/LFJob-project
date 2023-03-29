@@ -25,6 +25,10 @@ const projectName = "LFJob-project";
 
 app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
 
+app.use((req, res, next) => {
+    res.locals.userInSession = req.session.currentUser; // userInSession for our views + req.session.currentUser for our middleware
+    next();
+  });
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
