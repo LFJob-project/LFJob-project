@@ -5,7 +5,7 @@ const Company = require("../models/Company.model");
 const router = express.Router();
 
 const isLoggedOut = require("../middleware/isLoggedOut");
-const isLoggedIn = require("../middleware/isLoggedIn");
+const {isEmployer, isCompany, isLoggedIn} = require("../middleware/isLoggedIn");
 
 
 //display Users
@@ -23,29 +23,6 @@ router.get("/users", (req, res, next) => {
     });
 });
 
-
-//display User's jobs
-router.get("/users/:userId", (req, res, next) => {
-  const userId = req.params.userId;
-  let userDetails;
-
-  User.findById()
-    .then( userFromDB => {
-      userDetails = userFromDB;
-      return Job.find();
-    })
-    .then ( jobsArr => {
-      const data = {
-        user: userDetails,
-        job: jobsArr 
-      }
-      res.render("user/user-listings", data);
-    })
-    .catch(err => { 
-      console.log("error getting Users from DB", err);
-      next(err);
-    });
-})
 
 router.get("/contact", (req, res, next) => {
   res.render("contact")

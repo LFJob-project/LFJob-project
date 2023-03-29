@@ -3,12 +3,12 @@ const Company = require('../models/Company.model')
 const router = express.Router();
 
 const isLoggedOut = require("../middleware/isLoggedOut");
-const {isCompanyLoggedIn, isEmployerLoggedIn, isLoggedIn} = require("../middleware/isLoggedIn");
+const {isCompany, isEmployer, isLoggedIn} = require("../middleware/isLoggedIn");
 const Job = require('../models/Job.model');
 
 
 //Display companies
-router.get("/companies", (req, res, next) => {
+router.get("/companies", isLoggedIn, isEmployer, (req, res, next) => {
   Company.find()
     .then( companiesArr => {
 
@@ -25,7 +25,7 @@ router.get("/companies", (req, res, next) => {
 
 
 //route to get each companies jobs only
-router.get("/companies/my-listings", (req, res, next) =>{
+router.get("/companies/my-listings", isLoggedIn, isCompany, (req, res, next) =>{
    const id = req.session.currentUser._id;
    Job.find({companyId: id})
     .then(jobs => {
@@ -40,11 +40,18 @@ router.get("/companies/my-listings", (req, res, next) =>{
     });
 });
 
-router.get("/companies/:jobId", (req, res, next) => {
+router.get("/companies/:jobId", isLoggedIn, isEmployer, (req, res, next) => {
   const id = req.params.jobId;
   Job.find({companyId: id})
+    .populate("companyId")
     .then( jobsArr => {
-      res.render("/companies/listings", {jobsArr})
+      const company = jobsArr[0].companyId.name;
+      console.log(company)
+      const data = {
+        jobs: jobsArr,
+        comp: {company}
+      }
+      res.render("companies/listings", data)
     })
     .catch( err => {
       console.log("error getting companies jobs", err);

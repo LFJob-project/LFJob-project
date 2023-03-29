@@ -64,7 +64,7 @@ router.get("/jobs/:jobId", (req, res, next) => {
 })
 
 // edit display form
-router.get("/jobs/:jobId/update", (req, res, next) => {
+router.get("/jobs/:jobId/update", isCompany, isLoggedIn, (req, res, next) => {
     const jobId = req.params.jobId; 
     
     
@@ -81,7 +81,7 @@ router.get("/jobs/:jobId/update", (req, res, next) => {
 })
 
 // process edit form
-router.post("/jobs/:jobId/update", (req, res, next) => {
+router.post("/jobs/:jobId/update", isCompany, isLoggedIn, (req, res, next) => {
     const jobId = req.params.jobId;
 
     const jobDetails = {
@@ -99,7 +99,7 @@ router.post("/jobs/:jobId/update", (req, res, next) => {
 });
 
 // delete job
-router.post("/jobs/:jobId/delete", (req ,res, next) => {
+router.post("/jobs/:jobId/delete", isCompany, isLoggedIn, (req ,res, next) => {
     const jobId = req.params.jobId;
     
     Job.findByIdAndDelete(jobId)

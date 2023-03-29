@@ -22,6 +22,11 @@
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="/jobs">Jobs list</a>
           </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/companies/my-listings">My listings</a>
+          </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="/jobs/create">Create job ad</a>
           </li>
@@ -35,7 +40,9 @@
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="/auth/signup">Register</a></li>
               <li><a class="dropdown-item" href="/auth/login">Login</a></li>
-              <li><a class="dropdown-item" href="auth/logout">Logout</a></li>
+              <form action="/logout" method="post"><li><a class="dropdown-item" href="/auth/logout">Logout</a></li></form>
+              
+              
             </ul>
           </li>
         </ul>

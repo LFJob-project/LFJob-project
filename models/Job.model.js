@@ -19,7 +19,10 @@ const jobSchema = new Schema(
       type:String,
       required: [true, "details is required"]
     },
-    salary: String,
+    salary:{
+      type: String,
+      default: 'not specified',
+    },
     companyId: {
       type: Schema.Types.ObjectId,
       ref: "Company",

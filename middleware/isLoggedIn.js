@@ -19,7 +19,7 @@ function isEmployer (req, res, next) {
 function isLoggedIn (req, res, next) {
   // checks if the user is logged in when trying to access a specific page
   if (!req.session.currentUser) {
-    return res.redirect("/auth/login");
+    return res.redirect("auth/login");
   } 
   next();
 };

@@ -12,7 +12,7 @@ const saltRounds = 10;
 const User = require("../models/User.model");
 
 // Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
-const {isCompanyLoggedIn, isEmployerLoggedIn, isLoggedIn} = require("../middleware/isLoggedIn");
+const {isEmployer, isCompany, isLoggedIn} = require("../middleware/isLoggedIn");
 const isLoggedOut = require("../middleware/isLoggedOut");
 
 const Company = require("../models/Company.model");
@@ -184,7 +184,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 });
 
 // GET /auth/logout
-router.get("/logout", isLoggedIn, (req, res) => {
+router.get("/logout", isLoggedIn, (req, res, next) => {
   req.session.destroy((err) => {
     if (err) {
       res.status(500).render("auth/logout", { errorMessage: err.message });
