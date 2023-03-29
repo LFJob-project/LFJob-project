@@ -1,6 +1,6 @@
 body {
-  padding: 0 3px;
-  
+  padding: 0;
+  padding-bottom: 60px;
   margin: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -64,6 +64,8 @@ h1 {
   font-size: 16px;
   line-height: 1.8;
   max-width: 80%;
+  display: flex;
+  flex-direction: column;
 }
 
 .details-list{
@@ -71,21 +73,21 @@ h1 {
   margin-top: 20;
 }
 
+.apply-par{
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 0;
+}
 .btn-success{
   font-size: 25px;
   padding: 10px 20px;
-  border-radius: 5px;
   cursor: pointer;
-  position: absolute;
-  right: 50%;
+  display: block;
+  left:50%;
 }
 
 .btn-success:hover {
   background-color: rgb(2, 75, 2);
-}
-
-.jobs-list{
-  background-color: grey;
 }
 
 .intro-text {
@@ -95,3 +97,56 @@ h1 {
   margin-bottom: 150px;
 }
 
+.card {
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.card-link {
+  text-transform: uppercase;
+}
+
+.stay-down-footer {
+  height: 70px;
+}
+
+#create-job-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.create-job-form {
+  width: 800px;
+  max-width: 1000px;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.input-group-text {
+  border: 1px solid black
+}
+
+input[type="text"],
+textarea {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.create-job-btn {
+  background-color: rgb(47, 138, 250);
+  padding: 15px 20px;
+  border-radius: 5px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.create-job-btn:hover {
+  background-color: rgb(13, 130, 203);
+}
