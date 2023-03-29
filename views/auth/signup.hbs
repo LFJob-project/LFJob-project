@@ -1,95 +1,7 @@
-<div id="form">
-  <h2>Sign Up as company</h2>
-
-  <form action="/auth/signup" method="POST">
-
-    <label> Username
-      <input type="text" name="name" placeholder="Your username" />
-    </label>
-
-    <label> Email
-      <input type="email" name="email" placeholder="Your email" />
-    </label>
-
-    <label> Password
-      <input type="password" name="password" placeholder="Your password" />
-    </label>
-
-    <label>
-      <input type="text" name="url" placeholder="url">
-    </label>
-
-    <label>
-      <input type="text" name="companyDescription" placeholder="companyDescription">
-    </label>
-
-    <label>
-      <input type="number" name="established" placeholder="established">
-    </label>
-
-    <label>
-      <input type="text" name="location" placeholder="location">
-    </label>
-
-    <label>
-      <input type="number" name="employees" placeholder="employees">
-    </label>
-
-    <input type="text" name="type" value="company">
-
-    <button type="submit">Sign Up</button>
-
-    {{#if errorMessage}}
-      <p class="error">{{errorMessage}}</p>
-    {{/if}}
-  </form>
-</div>
-
-<div id="form">
-  <h2>Sign Up as employee</h2>
-
-  <form action="/auth/signup" method="POST">
-
-    <label> Username
-      <input type="text" name="name" placeholder="Your username" />
-    </label>
-
-    <label> Email
-      <input type="email" name="email" placeholder="Your email" />
-    </label>
-
-    <label> Password
-      <input type="password" name="password" placeholder="Your password" />
-    </label>
-
-    <label>
-      <input type="text" name="location" placeholder="location">
-    </label>
-
-
-    <label>
-      <input type="number" name="age" placeholder="age">
-    </label>
-
-
-    <label>
-      <input type="number" name="telephoneNumber" placeholder="telephoneNumber">
-    </label>
-
-    <input type="text" name="type" value="employee">
-
-    <button type="submit">Sign Up</button>
-
-    {{#if errorMessage}}
-      <p class="error">{{errorMessage}}</p>
-    {{/if}}
-  </form>
-</div>
-
 <div class="container register">
                 <div class="row">
                     <div class="col-md-3 register-left">
-                        <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+                        
                         <h3>Welcome</h3>
                         <p>Please Register to have access to all our functionalty</p>
                         <form action="/auth/login" method="get">
@@ -109,7 +21,7 @@
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <h3 class="register-heading">Register as an Employee</h3>
                                 <div class="row register-form">
-                                  <form action="/auth/signup" method="post"></form>
+                                  <form action="/auth/signup" method="post">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <input type="text" class="form-control" placeholder="Username *" name="name" />
@@ -134,7 +46,7 @@
                                         <div class="form-group">
                                             <input type="hidden" class="form-control" value="employee" name="type" />
                                         </div>
-                                        <input type="submit" class="btnRegister"  value="Register"/>
+                                        <button type="submit" class="btnRegister">Register</button>
                                     </div>
                                 </div>
                               </form>
@@ -185,3 +97,7 @@
                 </div>
 
             </div>
+
+    {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}}
