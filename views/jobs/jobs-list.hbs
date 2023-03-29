@@ -1,30 +1,26 @@
 <div class="jobs-list">
-<h1 class="mt-3 mb-3 text-center">Jobs list</h1>
-
-
-<div class="container ">
-  <div class="row">
-  {{#each jobs}}
-
-
-  <div class="col-12 col-sm-6 col-md-3 product mb-4">
-    <div class="card" style="width: 18rem; height:14rem;">
-      <div class="card-body">
-
-        <h5 class="card-title">{{this.title}}</h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary"> <a href="/companies/{{this.companyId._id}}">{{this.companyId.name}}</a></h6>
-        <h6 class="card-subtitle mb-2 text-body-secondary">{{this.location}}</h6>
-        <p class="card-text">{{this.jobDescription}}</p>
-        <p class="card-text">{{this.salary}}</p>
-        <a href="/jobs/{{this.id}}" class="card-link btn btn-primary">Details</a>
-
+  <h1 class="mt-3 mb-3 text-center">Jobs list</h1>
+  
+  <div class="container">
+    <div class="row" style="margin: -10px;">
+      {{#each jobs}}
+      
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 product mb-3" style="padding: 10px;">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">{{this.title}}</h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">
+              <a href="/companies/{{this.companyId._id}}">{{this.companyId.name}}</a>
+            </h6>
+            <h6 class="card-subtitle mb-2 text-body-secondary">{{this.location}}</h6>
+            <p class="card-text">{{this.jobDescription}}</p>
+            <p class="card-text">{{this.salary}}</p>
+            <a href="/jobs/{{this.id}}" class="card-link btn btn-primary">Details</a>
+          </div>
+        </div>
       </div>
+      
+      {{/each}}
     </div>
   </div>
-
-
-
-  {{/each}}
-  </div>
-</div>
 </div>
