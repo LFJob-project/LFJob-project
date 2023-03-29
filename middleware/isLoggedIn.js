@@ -8,7 +8,7 @@ function isCompany (req, res, next) {
 }
 
 function isEmployer (req, res, next) {
-  if(req.session.currentUser === true && req.session.currentUser.type === "employee"){
+  if(req.session.currentUser.type === "employee"){
 
     next()
   }else{
