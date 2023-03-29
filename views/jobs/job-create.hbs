@@ -1,11 +1,13 @@
 <!-- Job form -->
-<h1>Job alert</h1>
+<div id="create-job-container">
+ <h1>Create your job alert</h1>
+<div class="create-job-form">
 <form method="post" action="/jobs/create">
-<div class="input-group mb-3">
+<div class="input-group mb-3 ">
   <input type="text" class="form-control" placeholder="Job title" aria-label="job title" name="title" maxlength="100">
 </div>
 
-<div class="input-group mb-3">
+<div class="input-group mb-3 ">
   <input type="text" class="form-control" placeholder="Location" aria-label="job location" name="location">
 </div>
 
@@ -27,6 +29,8 @@
 </div>
 
 
-<button type="Submit">Submit</button>
+<button class="create-job-btn" type="Submit">Submit</button>
 
 </form>
+</div>
+</div>
