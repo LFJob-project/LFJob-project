@@ -1,31 +1,29 @@
+<div id="create-job-container">
 <h1 class="mt-3 mb-3 text-center">Update job: {{job.title}}</h1>
 
-
+<div class="create-job-form">
 <form action="/jobs/{{job._id}}/update" method="POST"> 
 {{#if errorMessage}}
   <p class="error">{{errorMessage}}</p>
 {{/if}}
-<div class="input-group mb-3">
-  <label>Title:
+<div class="input-group mb-3"> 
+  <span class="input-group-text">Title:</span>
   <input type="text" class="form-control" placeholder="Job title" aria-label="job title" name="title" value="{{job.title}}">
-  </label>
 </div>
 
 <div class="input-group mb-3">
-  <label>Location:
+  <span class="input-group-text">Location:</span>
   <input type="text" class="form-control" placeholder="Location" aria-label="job location" name="location" value="{{job.location}}">
-  </label>
+
 </div>
 
 <div class="input-group mb-3">
-  <label>Job description:
   <span class="input-group-text">Job description</span>
   <textarea class="form-control" placeholder="please describe briefly" aria-label="With textarea" name="jobDescription" maxlength="100">{{job.jobDescription}}</textarea>
-  </label>
-</div>
 
-<div class="input-group mb-3">
-  <label>Job details:
+
+<div class="input-group mb-3 mt-3">
+ 
   <span class="input-group-text">Job Details</span>
   <textarea class="form-control" placeholder="job details" aria-label="With textarea" name="details">{{job.details}}</textarea>
 </div>
@@ -33,13 +31,13 @@
 
 
 <div class="input-group mb-3">
-  <label>
   <span class="input-group-text">Salary</span>
-  <input type="number" placeholder="salary" class="form-control" aria-label="Amount" name="salary" min="0" max="1000000" value="{{job.salary}}">
-  </label>
+  <input type="text" placeholder="salary" class="form-control" aria-label="Amount" name="salary" min="0" max="1000000" value="{{job.salary}}">
 </div>
 
 
-<button type="Submit">Submit</button>
+<button class="create-job-btn" type="Submit">Submit</button>
 
 </form>
+</div>
+</div>
