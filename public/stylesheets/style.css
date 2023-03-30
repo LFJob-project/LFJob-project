@@ -164,7 +164,9 @@ textarea {
 .create-job-btn:hover {
   background-color: rgb(13, 130, 203);
 }
-
+#welcome{
+  text-shadow: #f8f9fa;
+}
 
 
 
