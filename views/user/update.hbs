@@ -2,28 +2,35 @@
  <h1>Update your Profile</h1>
 <div class="create-job-form">
 <form method="post" action="/user/update">
-<div class="input-group mb-3 ">
-  <input type="text" class="form-control"  aria-label="my name" name="name" value="{{usersProfile.name}}">
+<div class="input-group mb-3">
+  <span class="input-group-text">Name:</span>
+  <input class="form-control" aria-label="my name" name="name" value="{{usersProfile.name}}"></input>
 </div>
 
-<div class="input-group mb-3 ">
-  <input type="text" class="form-control" aria-label="my location" name="location" value="{{usersProfile.location}}">
+
+<div class="input-group mb-3">
+  <span class="input-group-text">Location:</span>
+  <input class="form-control" aria-label="my location" name="location" value="{{usersProfile.location}}"></input>
 </div>
 
 <div class="input-group mb-3">
-  <input class="form-control" type="number" maxlength="15" minlength="8" aria-label="my Phone" name="telephoneNumber" value="{{usersProfile.telephoneNumber}}"></input>
+  <span class="input-group-text">Phone number:</span>
+  <input class="form-control" type="number"  aria-label="my Phone" name="telephoneNumber" value="{{usersProfile.telephoneNumber}}"></input>
 </div>
 
 <div class="input-group mb-3">
-      <input class="form-control" type="number" max="99" min="16" aria-label="my age" name="age" value="{{usersProfile.age}}"></input>
+  <span class="input-group-text">Age:</span>
+  <input class="form-control" type="number" max="99" min="16" aria-label="my age" name="age" value="{{usersProfile.age}}"></input>
 </div>
 
 <div class="input-group mb-3">
-      <input class="form-control" type="email" aria-label="my email" name="email" value="{{usersProfile.email}}"></input>
+  <span class="input-group-text">Email:</span>
+  <input class="form-control" type="email"  aria-label="my email" name="email" value="{{usersProfile.email}}"></input>
 </div>
 
 
 <button class="create-job-btn" type="Submit">Submit</button>
+
 
 </form>
 </div>
