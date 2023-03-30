@@ -158,7 +158,8 @@ textarea {
 }
 
 .create-job-btn {
-  background-color: rgb(250, 235, 12);
+  margin-left: 45%;
+  background-color: #AEBDCA;
   border: none;
   padding: 10px 20px;
   font-size: 24px;
@@ -167,15 +168,12 @@ textarea {
 }
 
 .create-job-btn:hover {
-  background-color: rgb(198, 182, 6);
+  background-color: #7895B2;
 }
+
 #welcome{
   text-shadow: #f8f9fa;
 }
-
-
-
-
 
 .register{
   background: -webkit-linear-gradient(left, #3931af, #00c6ff);
