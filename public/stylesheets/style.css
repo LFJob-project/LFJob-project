@@ -256,12 +256,6 @@ textarea {
   border-bottom-left-radius: 1.5rem;
 }
 .register-heading{
-<<<<<<< HEAD
-  text-align: center;
-  margin-top: 8%;
-  margin-bottom: -15%;
-  color: #495057;
-=======
     text-align: center;
     margin-top: 8%;
     margin-bottom: -15%;
@@ -357,5 +351,4 @@ textarea {
 
 .contact-list {
   font-size: 24px;
->>>>>>> f5bae12bda36b37c61e6c3c6fc8353a8787e0058
 }
