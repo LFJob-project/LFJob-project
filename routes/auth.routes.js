@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const transporter = require("../config/transporter.config");
+
 // ℹ️ Handles password encryption
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
@@ -104,9 +104,6 @@ router.post("/signup", isLoggedOut, (req, res, next) => {
               next(err);
             })
           }
-    })
-    .then( (info) => {
-      console.log(info);
     })
     .then((user) => {
       res.redirect("/auth/login");

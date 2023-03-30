@@ -1,0 +1,59 @@
+<div class="container register">
+                <div class="row">
+                    <div class="col-md-3 register-left">
+                        
+                        <h3>Welcome</h3>
+                        <p>Please Register to have access to all our functionalty</p>
+                        <form action="/auth/login" method="get">
+                        <input type="submit" value="Login"/><br/>
+                        </form>
+                    </div>
+                    <div class="col-md-9 register-right">
+                        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="company-signup" role="tab" aria-controls="profile" aria-selected="false">Company Signup</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                
+                                <div class="row register-form">
+                                  <form action="/auth/signup" method="post">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Username *" name="name" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Email *" name="email" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Password *" name="password" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control"  placeholder="location *" name="location" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" placeholder="Age *" name="age" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="number" minlength="8" maxlength="15" name="telephoneNumber" class="form-control" placeholder="Your Phone *"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="hidden" class="form-control" value="employee" name="type" />
+                                        </div>
+                                        <button type="submit" class="btnRegister">Register</button>
+                                    </div>
+                                  </form>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}}
+
