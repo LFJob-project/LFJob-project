@@ -5,8 +5,6 @@ require("dotenv").config();
 
 // ℹ️ Connects to the database
 require("./db");
-
-const { isUserCompany } = require("./middleware/isUserDynamic");
 // Handles http requests (express is node js framework)
 // https://www.npmjs.com/package/express
 const express = require("express");
@@ -28,8 +26,27 @@ app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
 
 app.use((req, res, next) => {
     res.locals.userInSession = req.session.currentUser; // userInSession for our views + req.session.currentUser for our middleware
+    
+    if(req.session.currentUser){
+      if(req.session.currentUser.type === "company"){
+        res.locals.isCompany = true;
+      }
+      else{
+        res.locals.isCompany = false;
+      }
+  
+      if(req.session.currentUser.type === "employee"){
+        res.locals.isEmployee = true;
+      }
+      else{
+        res.locals.isEmployee = false;
+      }
+    }
+
+
     next();
   });
+
 
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");

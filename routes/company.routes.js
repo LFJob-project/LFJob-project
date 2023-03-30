@@ -8,7 +8,7 @@ const Job = require('../models/Job.model');
 
 
 //Display companies
-router.get("/companies", isLoggedIn, isEmployer, (req, res, next) => {
+router.get("/companies", (req, res, next) => {
   Company.find()
     .then( companiesArr => {
 
