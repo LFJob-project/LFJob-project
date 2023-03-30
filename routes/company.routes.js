@@ -40,7 +40,7 @@ router.get("/companies/my-listings", isLoggedIn, isCompany, (req, res, next) =>{
     });
 });
 
-router.get("/companies/:jobId", isLoggedIn, isEmployer, (req, res, next) => {
+router.get("/companies/:jobId", (req, res, next) => {
   const id = req.params.jobId;
   Job.find({companyId: id})
     .populate("companyId")
