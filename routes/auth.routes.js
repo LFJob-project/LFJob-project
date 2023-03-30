@@ -105,8 +105,14 @@ router.post("/signup", isLoggedOut, (req, res, next) => {
             })
           }
     })
+    .then( (info) => {
+      console.log(info);
+    })
+    .then((user) => {
+      res.redirect("/auth/login");
+    })
     .then( () => {
-      return transporter.sendMail({
+      transporter.sendMail({
         from: `"The best Job Scout in town " ${process.env.EMAIL_ADDRESS}`,
         to: req.body.email,
         subject: 'Thank you for your registration',
@@ -128,12 +134,6 @@ router.post("/signup", isLoggedOut, (req, res, next) => {
               <img src="../public/images/bob-pinapple.jpeg" alt="a nice pineapple picture"> `
         
       })
-    })
-    .then( (info) => {
-      console.log(info);
-    })
-    .then((user) => {
-      res.redirect("/auth/login");
     })
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
