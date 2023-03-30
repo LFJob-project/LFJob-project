@@ -18,6 +18,11 @@ h1 {
   height: 500px;
 }
 
+#navbar-title {
+  padding-left: 10px;
+  font-size: 2rem;
+}
+
 #navbar{
   background-color: rgb(2, 2, 3) !important;
 }
@@ -357,4 +362,39 @@ textarea {
 
 .contact-list {
   font-size: 24px;
+}
+
+#thank-you{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.thank-you{
+  margin-top: 30px;
+}
+.thanks-img{
+  width: 400px;
+  margin-top: 20px;
+}
+
+.apply-form {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+.apply-form-btn {
+  margin-left: 30%;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 24px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.apply-form-btn:hover {
+  background-color: #0359b6;
 }

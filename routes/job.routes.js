@@ -51,6 +51,17 @@ router.post("/jobs/create", isLoggedIn, isCompany, (req, res, next) => {
   });
 
 
+//apply for job
+router.get("/jobs/apply", (req, res, next) => {
+    res.render("jobs/job-apply");
+})
+
+
+// application form 
+router.get("/jobs/job-apply", (req, res, next) => {
+    res.render("jobs/job-applymsg");
+})
+
 // jobs details
 router.get("/jobs/:jobId", (req, res, next) => {
     const jobId = req.params.jobId;
