@@ -89,7 +89,6 @@ router.get("/user/company/profile", (req, res, next) => {
   const usersId = req.session.currentUser._id;
   Company.findById(usersId)
     .then( usersProfile => {
-      console.log(usersProfile);
       res.render("user/company/profile", {usersProfile})
     })
     .catch( err => {
@@ -133,19 +132,13 @@ router.post("/user/company/update", (req, res, next) => {
 
 router.post("/user/company/profile/delete", (req, res, next) => {
   const usersId = req.session.currentUser._id;
+
   Company.findByIdAndDelete(usersId)
     .then( () => {
-      Job.find( {companyId: usersId})
-        .then( allJobsOfCompany => {
-          allJobsOfCompany.forEach( element => {
-            const jobsId = element._id;
-            Job.findByIdAndDelete(jobsId)
-              .then( () => {
-                res.redirect("/auth/logout")
-            })
-        })
-      })
-      
+      return Job.deleteMany({ companyId: usersId })
+    })
+    .then( () => {
+      res.redirect("/auth/logout")
     })
     .catch( err => {
       console.log("error deleting UsersProfile from DB", err);
