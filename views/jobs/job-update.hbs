@@ -1,7 +1,10 @@
-<h1>Update job: {{job.title}}</h1>
+<h1 class="mt-3 mb-3 text-center">Update job: {{job.title}}</h1>
 
 
 <form action="/jobs/{{job._id}}/update" method="POST"> 
+{{#if errorMessage}}
+  <p class="error">{{errorMessage}}</p>
+{{/if}}
 <div class="input-group mb-3">
   <label>Title:
   <input type="text" class="form-control" placeholder="Job title" aria-label="job title" name="title" value="{{job.title}}">
