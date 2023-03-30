@@ -106,7 +106,7 @@ router.post("/signup", isLoggedOut, (req, res, next) => {
           }
     })
     .then( () => {
-      transporter.sendMail({
+      return transporter.sendMail({
         from: `"The best Job Scout in town " ${process.env.EMAIL_ADDRESS}`,
         to: req.body.email,
         subject: 'Thank you for your registration',
