@@ -1,8 +1,11 @@
 <!-- Job form -->
 <div id="create-job-container">
- <h1>Create your job alert</h1>
+ <h1 class="mt-3 mb-3 text-center">Create your job alert</h1>
 <div class="create-job-form">
 <form method="post" action="/jobs/create">
+{{#if errorMessage}}
+  <p class="error">{{errorMessage}}</p>
+{{/if}}
 <div class="input-group mb-3 ">
   <input type="text" class="form-control" placeholder="Job title" aria-label="job title" name="title" maxlength="100">
 </div>
