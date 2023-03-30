@@ -10,10 +10,6 @@ a {
   color: #00b7ff;
 }
 
-h1 {
-  color: 15px;
-}
-
  img {
   height: 500px;
 }
@@ -148,7 +144,10 @@ li{
 }
 
 .input-group-text {
-  border: 1px solid black
+  font-size: 18px;
+  border: 1px solid black;
+  background-color: rgb(147, 146, 146);
+  color: black;
 }
 
 input[type="text"],
@@ -159,15 +158,16 @@ textarea {
 }
 
 .create-job-btn {
-  background-color: rgb(47, 138, 250);
-  padding: 15px 20px;
+  background-color: rgb(250, 235, 12);
+  border: none;
+  padding: 10px 20px;
+  font-size: 24px;
   border-radius: 5px;
-  margin-top: 15px;
   cursor: pointer;
 }
 
 .create-job-btn:hover {
-  background-color: rgb(13, 130, 203);
+  background-color: rgb(198, 182, 6);
 }
 #welcome{
   text-shadow: #f8f9fa;
@@ -384,6 +384,10 @@ textarea {
   font-size: 16px;
 }
 
+.apply-for-job{
+  margin-left: 30;
+}
+
 .apply-form-btn {
   margin-left: 30%;
   background-color: #007bff;
@@ -398,3 +402,4 @@ textarea {
 .apply-form-btn:hover {
   background-color: #0359b6;
 }
+

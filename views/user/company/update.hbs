@@ -3,32 +3,38 @@
 <div class="create-job-form">
 <form method="post" action="/user/company/update">
 <div class="input-group mb-3 ">
+  <span class="input-group-text">Company name:</span>
   <input type="text" class="form-control"  aria-label="company name" name="name" value="{{usersProfile.name}}">
 </div>
 
 <div class="input-group mb-3 ">
+  <span class="input-group-text">Location:</span>
   <input type="text" class="form-control" aria-label="company location" name="location" value="{{usersProfile.location}}">
 </div>
 
 <div class="input-group mb-3">
- 
+ <span class="input-group-text">Description:</span>
   <textarea class="form-control" aria-label="With textarea" name="companyDescription">{{usersProfile.companyDescription}}</textarea>
 </div>
 
 
 <div class="input-group mb-3">
+  <span class="input-group-text">Established:</span>
   <input type="number" class="form-control" aria-label="Amount" name="established" value="{{usersProfile.established}}">
 </div>
 
 <div class="input-group mb-3">
+  <span class="input-group-text">Number of employees:</span>
   <input type="number" class="form-control" aria-label="Amount" name="employees" value="{{usersProfile.employees}}">
 </div>
 
 <div class="input-group mb-3">
+  <span class="input-group-text">url:</span>
   <input type="text" class="form-control" aria-label="Amount" name="url" value="{{usersProfile.url}}">
 </div>
 
 <div class="input-group mb-3">
+  <span class="input-group-text">Email:</span>
   <input type="email" class="form-control" aria-label="Amount" name="email" value="{{usersProfile.email}}">
 </div>
 
