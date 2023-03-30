@@ -36,6 +36,10 @@ h1 {
   margin-right: 15px;
 }
 
+.navbar-toggler{
+  background-color: white;
+}
+
 .nav-link {
   font-weight: bold;
   text-transform: uppercase;
