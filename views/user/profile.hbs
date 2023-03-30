@@ -1,0 +1,20 @@
+<h1 class="text-center">Welcome {{usersProfile.name}}</h1>
+
+<div class="container">
+    <div class="card col-12" style="">
+  <div class="card-body">
+    <h5 class="card-title">{{usersProfile.name}}</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">{{usersProfile.location}}</h6>
+    <h6 class="card-subtitle mb-2 text-body-secondary">{{usersProfile.telephoneNumber}}</h6>
+    <h6 class="card-subtitle mb-2 text-body-secondary">{{usersProfile.age}}</h6>
+    <h6 class="card-subtitle mb-2 text-body-secondary">{{usersProfile.email}}</h6>
+
+    <a href="/user/profileUpdate"><button type="button" class="btn btn-primary btn-sm mt-2">Update my Profile</button></a>
+    
+    <form method="POST" action="/user/profile/delete" style="display: inline;">
+        <button type="submit" class="btn btn-danger btn-sm mt-2">Delete my Account</button>
+    </form>
+    <p>please note: if you press the delete Button, you won't be able to login again</p>
+  </div>
+</div>
+</div>

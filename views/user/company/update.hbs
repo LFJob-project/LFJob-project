@@ -1,0 +1,40 @@
+<div id="create-job-container">
+ <h1>Update your Company Profile</h1>
+<div class="create-job-form">
+<form method="post" action="/user/company/update">
+<div class="input-group mb-3 ">
+  <input type="text" class="form-control"  aria-label="company name" name="name" value="{{usersProfile.name}}">
+</div>
+
+<div class="input-group mb-3 ">
+  <input type="text" class="form-control" aria-label="company location" name="location" value="{{usersProfile.location}}">
+</div>
+
+<div class="input-group mb-3">
+ 
+  <textarea class="form-control" aria-label="With textarea" name="companyDescription">{{usersProfile.companyDescription}}</textarea>
+</div>
+
+
+<div class="input-group mb-3">
+  <input type="number" class="form-control" aria-label="Amount" name="established" value="{{usersProfile.established}}">
+</div>
+
+<div class="input-group mb-3">
+  <input type="number" class="form-control" aria-label="Amount" name="employees" value="{{usersProfile.employees}}">
+</div>
+
+<div class="input-group mb-3">
+  <input type="text" class="form-control" aria-label="Amount" name="url" value="{{usersProfile.url}}">
+</div>
+
+<div class="input-group mb-3">
+  <input type="email" class="form-control" aria-label="Amount" name="email" value="{{usersProfile.email}}">
+</div>
+
+
+<button class="create-job-btn" type="Submit">Submit</button>
+
+</form>
+</div>
+</div>

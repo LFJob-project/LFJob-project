@@ -28,18 +28,8 @@ app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
 app.use((req, res, next) => {
     res.locals.userInSession = req.session.currentUser; // userInSession for our views + req.session.currentUser for our middleware
     next();
-    
   });
-app.use((req, res, next) => {
-  console.log(req.session.currentUser.type);
-  res.locals.companyInSession = function(req, res, next){
-    if(req.session.currentUser.type = "company"){ 
-      next()
-  }else{
-      return false;
-  }
-  }
-})
+
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
