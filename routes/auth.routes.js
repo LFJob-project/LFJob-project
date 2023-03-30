@@ -195,5 +195,11 @@ router.get("/logout", isLoggedIn, (req, res, next) => {
   });
 });
 
+router.get("/company-signup", (req, res, next) => {
+  res.render("auth/company-signup");
+})
+
+
+
 module.exports = router
 

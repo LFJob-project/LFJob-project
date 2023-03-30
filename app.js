@@ -6,6 +6,7 @@ require("dotenv").config();
 // ℹ️ Connects to the database
 require("./db");
 
+const { isUserCompany } = require("./middleware/isUserDynamic");
 // Handles http requests (express is node js framework)
 // https://www.npmjs.com/package/express
 const express = require("express");
@@ -35,7 +36,7 @@ const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
 
 const authRoutes = require("./routes/auth.routes");
-const { isUserCompany } = require("./middleware/isUserDynamic");
+
 app.use("/auth", authRoutes);
 app.use("/", require("./routes/job.routes.js"));
 app.use("/", require("./routes/user.routes"))
