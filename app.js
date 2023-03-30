@@ -2,7 +2,7 @@
 // https://www.npmjs.com/package/dotenv
 require("dotenv").config();
 
-
+const transporter = require("./config/transporter.config");
 // ℹ️ Connects to the database
 require("./db");
 // Handles http requests (express is node js framework)
