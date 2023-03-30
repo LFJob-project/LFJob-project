@@ -48,8 +48,8 @@
                                         </div>
                                         <button type="submit" class="btnRegister">Register</button>
                                     </div>
-                                </div>
-                              </form>
+                                  </form>
+                                </div>  
                             </div>
                             <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 <h3  class="register-heading">Register as a Company</h3>
@@ -68,8 +68,6 @@
                                         <div class="form-group">
                                             <input type="text" class="form-control" placeholder="URL *" name="url" />
                                         </div>
-
-
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -87,7 +85,7 @@
                                         <div class="form-group">
                                             <input type="hidden" class="form-control"  name="type" value="company" />
                                         </div>
-                                        <input type="submit" class="btnRegister"  value="Register"/>
+                                        <button type="submit" class="btnRegister">Register</button>
                                     </div>
                                   </form>
                                 </div>
@@ -95,9 +93,9 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
     {{#if errorMessage}}
       <p class="error">{{errorMessage}}</p>
     {{/if}}
+

@@ -6,7 +6,6 @@ require("dotenv").config();
 // ℹ️ Connects to the database
 require("./db");
 
-
 // Handles http requests (express is node js framework)
 // https://www.npmjs.com/package/express
 const express = require("express");
@@ -29,12 +28,24 @@ app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
 app.use((req, res, next) => {
     res.locals.userInSession = req.session.currentUser; // userInSession for our views + req.session.currentUser for our middleware
     next();
+    
   });
+app.use((req, res, next) => {
+  console.log(req.session.currentUser.type);
+  res.locals.companyInSession = function(req, res, next){
+    if(req.session.currentUser.type = "company"){ 
+      next()
+  }else{
+      return false;
+  }
+  }
+})
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
 
 const authRoutes = require("./routes/auth.routes");
+const { isUserCompany } = require("./middleware/isUserDynamic");
 app.use("/auth", authRoutes);
 app.use("/", require("./routes/job.routes.js"));
 app.use("/", require("./routes/user.routes"))
