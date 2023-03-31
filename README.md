@@ -2,7 +2,7 @@
 
 ## Introduction
 
-![homepage](./images/image.png)
+![homepage](./images/readmeproject2.jpg)
 
 ## Requirements
 
@@ -21,4 +21,4 @@ whatever job you want. As a company you have the options to create new jobs ads,
 ## Demo
 
 Get an impression of our application here
-[LFJob] (https://lfjob-project.adaptable.app/)
+ (https://lfjob-project.adaptable.app/)
