@@ -2,7 +2,7 @@
 
 ## Introduction
 
-![homepage](/images/readmeproject2.jpg)
+![homepage](readmeproject2.jpg)
 
 ## Requirements
 
