@@ -1,6 +1,5 @@
 body {
   padding: 0;
-  padding-bottom: 60px;
   margin: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #D5CEA3;
@@ -398,5 +397,5 @@ textarea {
 }
 
 .height{
-  min-height: 100%;
+  min-height: 90%;
 }
