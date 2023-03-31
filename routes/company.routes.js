@@ -45,8 +45,13 @@ router.get("/companies/:jobId", (req, res, next) => {
   Job.find({companyId: id})
     .populate("companyId")
     .then( jobsArr => {
+      let compName;
+      if(jobsArr.length > 0){
+        compName = jobsArr[0].companyId.name;
+      }
       const data = {
         jobs: jobsArr,
+        compname: compName,
       }
       res.render("companies/listings", data)
     })

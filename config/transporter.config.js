@@ -1,11 +1,13 @@
 const nodemailer = require("nodemailer");
  
 const transporter = nodemailer.createTransport({
-  service: 'hotmail',
+  host: 'smtp.hotmail.com',
+  secure: true,
+  port:465,
   auth: {
-    user: process.env.EMAIL_ADDRESS,
-    pass: process.env.EMAIL_PASSWORD
-  }
+      user: `lfjob-project@hotmail.com`,
+      pass: `Alicebob1!`
+  },
 });
 
-module.exports =  transporter;
+module.exports = transporter;
