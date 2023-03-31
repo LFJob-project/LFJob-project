@@ -2,7 +2,7 @@
 
 ## Introduction
 
-![homepage](readmeproject2.jpg)
+![](/public/images/readmeproject2.jpg)
 
 ## Requirements
 
