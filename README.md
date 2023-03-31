@@ -2,7 +2,7 @@
 
 ## Introduction
 
-![homepage](images/image.png)
+![homepage](./images/image.png)
 
 ## Requirements
 
